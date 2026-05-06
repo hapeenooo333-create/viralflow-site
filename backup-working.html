@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViralFlow AI - Monetization Mode</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#050816;
+color:white;
+min-height:100vh;
+padding:18px;
+}
+
+.container{
+max-width:720px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+font-size:34px;
+color:#00ff88;
+margin-top:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#aaa;
+margin:10px 0 22px;
+}
+
+.stats{
+display:flex;
+gap:10px;
+margin-bottom:18px;
+}
+
+.stat{
+flex:1;
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:14px;
+padding:14px;
+text-align:center;
+}
+
+.stat b{
+font-size:22px;
+color:#00ff88;
+}
+
+.tabs{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:18px;
+}
+
+.tab{
+padding:10px 14px;
+background:#111827;
+border:1px solid #334155;
+border-radius:20px;
+cursor:pointer;
+color:#ddd;
+}
+
+.tab.active{
+background:#00ff88;
+color:black;
+font-weight:bold;
+}
+
+.panel{
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:18px;
+}
+
+.premium{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:14px;
+color:#fbbf24;
+}
+
+textarea{
+width:100%;
+min-height:150px;
+background:#020617;
+border:1px solid #334155;
+border-radius:14px;
+padding:15px;
+font-size:16px;
+color:white;
+resize:vertical;
+outline:none;
+}
+
+.buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:14px;
+}
+
+button{
+padding:14px;
+border:none;
+border-radius:14px;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+}
+
+.generate{
+background:#00ff88;
+color:black;
+}
+
+.variation{
+background:#38bdf8;
+color:black;
+}
+
+.copy{
+background:#f97316;
+color:black;
+}
+
+.export{
+background:#a855f7;
+color:white;
+}
+
+.loading{
+display:none;
+text-align:center;
+margin-top:14px;
+color:#00ff88;
+}
+
+.result{
+display:none;
+margin-top:16px;
+background:#020617;
+border:1px solid #334155;
+border-radius:14px;
+padding:18px;
+white-space:pre-wrap;
+line-height:1.7;
+}
+
+.history{
+margin-top:20px;
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:16px;
+padding:16px;
+}
+
+.history h3{
+margin-bottom:12px;
+color:#00ff88;
+}
+
+.item{
+background:#020617;
+border:1px solid #1e293b;
+padding:10px;
+border-radius:10px;
+margin-bottom:8px;
+font-size:14px;
+color:#ccc;
+}
+
+.footer{
+text-align:center;
+color:#666;
+margin-top:20px;
+font-size:13px;
+}
+
+@media(max-width:480px){
+.buttons{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:28px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔥 ViralFlow AI</h1>
+
+<div class="subtitle">
+Full Monetization Mode • TikTok • WhatsApp • Affiliate • Ads • YouTube Shorts
+</div>
+
+<div class="stats">
+<div class="stat">
+Today<br>
+<b id="todayCount">0</b>
+</div>
+
+<div class="stat">
+Total<br>
+<b id="totalCount">0</b>
+</div>
+</div>
+
+<div class="tabs">
+<div class="tab active" onclick="setTab('TikTok',this)">TikTok</div>
+<div class="tab" onclick="setTab('WhatsApp',this)">WhatsApp</div>
+<div class="tab" onclick="setTab('Affiliate',this)">Affiliate</div>
+<div class="tab" onclick="setTab('Ads',this)">Ads</div>
+<div class="tab" onclick="setTab('YouTube Shorts',this)">YouTube Shorts</div>
+</div>
+
+<div class="panel">
+
+<label class="premium">
+<input type="checkbox" id="premiumMode">
+Premium Mode
+</label>
+
+<textarea id="prompt" placeholder="Mfano: Nipe TikTok hooks za kuuza bidhaa online..."></textarea>
+
+<div class="buttons">
+<button class="generate" onclick="generateAI(false)">🚀 Generate</button>
+
+<button class="variation" onclick="generateAI(true)">⚡ 10 Variations</button>
+
+<button class="copy" onclick="copyResult()">📋 Copy</button>
+
+<button class="export" onclick="exportTXT()">⬇ Export TXT</button>
+</div>
+
+<div class="loading" id="loading">
+⏳ ViralFlow AI inatengeneza content...
+</div>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<div class="history">
+<h3>📌 History</h3>
+<div id="historyList"></div>
+</div>
+
+<div class="footer">
+Powered by Groq + Cloudflare Workers
+</div>
+
+</div>
+
+<script>
+
+const API_URL = "https://viralflow-groq-api.hapeenooo555.workers.dev";
+
+let currentTab = "TikTok";
+
+function setTab(tab,el){
+
+currentTab = tab;
+
+document.querySelectorAll(".tab").forEach(t=>{
+t.classList.remove("active");
+});
+
+el.classList.add("active");
+
+const prompt = document.getElementById("prompt");
+
+if(tab==="TikTok"){
+prompt.placeholder="Mfano: Nipe TikTok hook ya kuuza viatu...";
+}
+
+if(tab==="WhatsApp"){
+prompt.placeholder="Mfano: Nipe WhatsApp closing script...";
+}
+
+if(tab==="Affiliate"){
+prompt.placeholder="Mfano: Nipe affiliate marketing caption...";
+}
+
+if(tab==="Ads"){
+prompt.placeholder="Mfano: Nipe Facebook ad copy...";
+}
+
+if(tab==="YouTube Shorts"){
+prompt.placeholder="Mfano: Nipe YouTube Shorts script...";
+}
+
+}
+
+function updateStats(){
+
+const today = new Date().toDateString();
+
+let savedDay = localStorage.getItem("vf_day");
+
+if(savedDay !== today){
+localStorage.setItem("vf_day",today);
+localStorage.setItem("vf_today","0");
+}
+
+document.getElementById("todayCount").innerText =
+localStorage.getItem("vf_today") || 0;
+
+document.getElementById("totalCount").innerText =
+localStorage.getItem("vf_total") || 0;
+
+}
+
+function increaseStats(){
+
+let today =
+parseInt(localStorage.getItem("vf_today") || 0) + 1;
+
+let total =
+parseInt(localStorage.getItem("vf_total") || 0) + 1;
+
+localStorage.setItem("vf_today",today);
+localStorage.setItem("vf_total",total);
+
+updateStats();
+
+}
+
+async function generateAI(variations){
+
+const prompt =
+document.getElementById("prompt").value.trim();
+
+const premium =
+document.getElementById("premiumMode").checked;
+
+const result =
+document.getElementById("result");
+
+const loading =
+document.getElementById("loading");
+
+if(!prompt){
+alert("Andika prompt kwanza");
+return;
+}
+
+let finalPrompt = `
+You are ViralFlow AI.
+
+Respond in Swahili.
+
+Category: ${currentTab}
+
+Premium mode:
+${premium ? "ON" : "OFF"}
+
+Task:
+${prompt}
+
+Format:
+HOOK:
+CAPTION:
+CTA:
+HASHTAGS:
+
+${variations
+? "Generate 10 strong variations."
+: "Generate one powerful result."}
+
+Make it persuasive, emotional, viral and practical.
+`;
+
+loading.style.display = "block";
+result.style.display = "none";
+
+try{
+
+const res = await fetch(API_URL,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+prompt:finalPrompt
+})
+});
+
+const data = await res.json();
+
+const text =
+data.result || "No response";
+
+result.innerText = text;
+
+result.style.display = "block";
+
+saveHistory(prompt,text);
+
+increaseStats();
+
+}catch(e){
+
+result.innerText =
+"Error: " + e.message;
+
+result.style.display = "block";
+
+}
+
+loading.style.display = "none";
+
+}
+
+function copyResult(){
+
+const text =
+document.getElementById("result").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Copied ✅");
+
+}
+
+function exportTXT(){
+
+const text =
+document.getElementById("result").innerText;
+
+if(!text){
+alert("Hakuna result");
+return;
+}
+
+const blob =
+new Blob([text],{
+type:"text/plain"
+});
+
+const a =
+document.createElement("a");
+
+a.href =
+URL.createObjectURL(blob);
+
+a.download =
+"viralflow-result.txt";
+
+a.click();
+
+}
+
+function saveHistory(prompt,result){
+
+let history =
+JSON.parse(
+localStorage.getItem("vf_history") || "[]"
+);
+
+history.unshift({
+tab:currentTab,
+prompt:prompt,
+result:result,
+time:new Date().toLocaleString()
+});
+
+history = history.slice(0,10);
+
+localStorage.setItem(
+"vf_history",
+JSON.stringify(history)
+);
+
+renderHistory();
+
+}
+
+function renderHistory(){
+
+let history =
+JSON.parse(
+localStorage.getItem("vf_history") || "[]"
+);
+
+const box =
+document.getElementById("historyList");
+
+box.innerHTML = "";
+
+history.forEach(h=>{
+
+const div =
+document.createElement("div");
+
+div.className = "item";
+
+div.innerText =
+`${h.tab} • ${h.time}
+
+${h.prompt}`;
+
+box.appendChild(div);
+
+});
+
+}
+
+updateStats();
+
+renderHistory();
+
+</script>
+
+</body>
+  </html>
