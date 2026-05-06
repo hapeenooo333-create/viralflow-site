@@ -1,365 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>ViralFlow AI</title>
+Upgrade my ViralFlow AI frontend to Full Monetization Mode.
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+Keep using this API:
+https://viralflow-groq-api.hapeenooo555.workers.dev
 
-body{
-font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-min-height:100vh;
-background:#0a0a0a;
-color:#e0e0e0;
-display:flex;
-flex-direction:column;
-align-items:center
-}
+Add these features:
 
-.container{
-width:100%;
-max-width:640px;
-padding:24px 16px
-}
+1. Tabs:
 
-header{
-text-align:center;
-margin-bottom:24px
-}
+- TikTok
+- WhatsApp
+- Affiliate
+- Ads
+- YouTube Shorts
 
-header h1{
-font-size:28px;
-background:linear-gradient(135deg,#ff6b6b,#ffa500,#ff6b6b);
-background-size:200% 200%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:shimmer 3s ease infinite
-}
+2. Buttons:
 
-header p{
-color:#888;
-margin-top:6px;
-font-size:14px
-}
+- Generate
+- Generate 10 Variations
+- Copy Result
+- Export TXT
 
-@keyframes shimmer{
-0%,100%{background-position:0% 50%}
-50%{background-position:100% 50%}
-}
+3. Local history:
 
-.templates{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-bottom:16px
-}
+- save last 10 prompts and results in localStorage
 
-.tpl-btn{
-padding:8px 14px;
-background:#1a1a1a;
-border:1px solid #333;
-border-radius:20px;
-color:#ccc;
-font-size:13px;
-cursor:pointer
-}
+4. Analytics:
 
-.tpl-btn.active{
-border-color:#ff6b6b;
-color:#ff6b6b;
-background:#1f1111
-}
+- generations today
+- total generations
 
-.prompt-box{
-background:#141414;
-border:1px solid #2a2a2a;
-border-radius:16px;
-padding:20px;
-margin-bottom:20px
-}
+5. Premium Mode toggle:
 
-textarea{
-width:100%;
-min-height:120px;
-background:#1a1a1a;
-border:1px solid #333;
-border-radius:12px;
-color:#e0e0e0;
-padding:14px;
-font-size:16px;
-resize:vertical;
-outline:none;
-font-family:inherit
-}
+- when ON, make prompts more advanced, persuasive, and high-converting
 
-textarea:focus{border-color:#ff6b6b}
-textarea::placeholder{color:#555}
+6. Swipe file section:
 
-.generate-btn{
-width:100%;
-padding:14px;
-margin-top:14px;
-background:linear-gradient(135deg,#ff6b6b,#ffa500);
-border:none;
-border-radius:12px;
-color:#000;
-font-size:16px;
-font-weight:700;
-cursor:pointer
-}
+- viral hooks examples
+- CTA examples
+- WhatsApp closing examples
 
-.generate-btn:disabled{
-opacity:.5;
-cursor:not-allowed
-}
+7. Mobile-first dark neon premium UI.
 
-.result-box{
-background:#141414;
-border:1px solid #2a2a2a;
-border-radius:16px;
-padding:20px;
-display:none
-}
+8. Keep the current working API connection unchanged.
 
-.result-box.visible{display:block}
-
-.result-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:12px
-}
-
-.result-label{
-font-size:12px;
-text-transform:uppercase;
-letter-spacing:1px;
-color:#ff6b6b;
-font-weight:600
-}
-
-.copy-btn{
-padding:6px 14px;
-background:#2a2a2a;
-border:1px solid #444;
-border-radius:8px;
-color:#ccc;
-font-size:12px;
-cursor:pointer
-}
-
-.result-text{
-font-size:15px;
-line-height:1.7;
-white-space:pre-wrap;
-color:#ccc
-}
-
-.result-text .tag{
-color:#ff6b6b;
-font-weight:700
-}
-
-.loading{
-display:none;
-text-align:center;
-padding:30px 0
-}
-
-.loading.visible{display:block}
-
-.spinner{
-width:40px;
-height:40px;
-border:3px solid #2a2a2a;
-border-top-color:#ff6b6b;
-border-radius:50%;
-animation:spin .8s linear infinite;
-margin:0 auto 12px
-}
-
-@keyframes spin{
-to{transform:rotate(360deg)}
-}
-
-.loading p{
-color:#666;
-font-size:14px
-}
-
-.error-msg{
-color:#ff6b6b;
-font-size:14px;
-text-align:center;
-padding:12px;
-display:none
-}
-
-.error-msg.visible{display:block}
-
-@media(max-width:480px){
-header h1{font-size:24px}
-textarea{font-size:15px;min-height:100px}
-.prompt-box,.result-box{padding:14px}
-.tpl-btn{font-size:12px;padding:6px 10px}
-}
-</style>
-</head>
-
-<body>
-<div class="container">
-
-<header>
-<h1>🔥 ViralFlow AI</h1>
-<p>Your Swahili marketing assistant — TikTok hooks, captions & more</p>
-</header>
-
-<div class="templates">
-<button class="tpl-btn" data-prompt="Nipe TikTok hooks 3 za kuuza product yangu">TikTok Hook</button>
-<button class="tpl-btn" data-prompt="Nipe caption ya viral kwa post yangu">Viral Caption</button>
-<button class="tpl-btn" data-prompt="Nipe WhatsApp closing script ya kubadilisha lead kuwa mteja">WhatsApp Closing</button>
-<button class="tpl-btn" data-prompt="Nipe faceless TikTok video script ya kuuza product yangu">Faceless Video Script</button>
-<button class="tpl-btn" data-prompt="Nipe CTA kali ya kuuza product yangu">CTA Generator</button>
-</div>
-
-<div class="prompt-box">
-<textarea id="prompt" placeholder="Mfano: Nipe TikTok hook ya kuuza viatu online..."></textarea>
-<button class="generate-btn" id="generateBtn" onclick="generate()">🚀 GENERATE</button>
-</div>
-
-<div class="loading" id="loading">
-<div class="spinner"></div>
-<p id="loadingText">Analyzing viral psychology...</p>
-</div>
-
-<div class="error-msg" id="error"></div>
-
-<div class="result-box" id="resultBox">
-<div class="result-header">
-<div class="result-label">AI Result</div>
-<button class="copy-btn" onclick="copyResult()">Copy</button>
-</div>
-<div class="result-text" id="resultText"></div>
-</div>
-
-</div>
-
-<script>
-const API_URL="https://viralflow-groq-api.hapeenooo555.workers.dev";
-
-const loadingTexts=[
-"Analyzing viral psychology...",
-"Generating hooks...",
-"Cooking viral content...",
-"Crafting persuasion...",
-"Making it irresistible..."
-];
-
-let loadingInterval;
-
-document.querySelectorAll(".tpl-btn").forEach(btn=>{
-btn.addEventListener("click",()=>{
-document.querySelectorAll(".tpl-btn").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-document.getElementById("prompt").value=btn.dataset.prompt;
-});
-});
-
-function startLoading(){
-let i=0;
-document.getElementById("loadingText").textContent=loadingTexts[0];
-loadingInterval=setInterval(()=>{
-i=(i+1)%loadingTexts.length;
-document.getElementById("loadingText").textContent=loadingTexts[i];
-},2000);
-}
-
-function stopLoading(){
-clearInterval(loadingInterval);
-}
-
-function formatTags(text){
-return text.replace(/^(HOOK|CAPTION|CTA|HASHTAGS|SCRIPT|CLOSING):/gm,'<span class="tag">$&</span>');
-}
-
-async function typeText(el,text,speed=12){
-el.textContent="";
-let i=0;
-
-return new Promise(resolve=>{
-function type(){
-if(i<text.length){
-el.textContent+=text.charAt(i);
-i++;
-setTimeout(type,speed);
-}else{
-el.innerHTML=formatTags(el.textContent);
-resolve();
-}
-}
-type();
-});
-}
-
-async function generate(){
-const prompt=document.getElementById("prompt").value.trim();
-const btn=document.getElementById("generateBtn");
-const loading=document.getElementById("loading");
-const resultBox=document.getElementById("resultBox");
-const resultText=document.getElementById("resultText");
-const error=document.getElementById("error");
-
-if(!prompt){
-alert("Andika prompt kwanza");
-return;
-}
-
-btn.disabled=true;
-loading.classList.add("visible");
-resultBox.classList.remove("visible");
-error.classList.remove("visible");
-startLoading();
-
-try{
-const res=await fetch(API_URL,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({prompt})
-});
-
-if(!res.ok){
-throw new Error("API error: "+res.status);
-}
-
-const data=await res.json();
-
-stopLoading();
-loading.classList.remove("visible");
-resultBox.classList.add("visible");
-
-await typeText(resultText,data.result||"No response");
-
-}catch(err){
-stopLoading();
-loading.classList.remove("visible");
-error.textContent=err.message||"Something went wrong";
-error.classList.add("visible");
-}finally{
-btn.disabled=false;
-}
-}
-
-function copyResult(){
-const text=document.getElementById("resultText").innerText;
-navigator.clipboard.writeText(text).then(()=>{
-const btn=document.querySelector(".copy-btn");
-btn.textContent="Copied!";
-setTimeout(()=>{btn.textContent="Copy"},1500);
-});
-}
-</script>
-
-</body>
-</html>
+Give me one complete index.html file ready to paste into GitHub.
