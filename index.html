@@ -403,12 +403,13 @@ result.style.display = "none";
 try{
 
 const res = await fetch(API_URL,{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify({
-  prompt: `
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json"
+  },
+
+  body: JSON.stringify({
+    prompt: `
 You are ViralFlow AI.
 You create HIGH-CONVERTING Swahili marketing content.
 
@@ -424,9 +425,8 @@ Rules:
 
 User request:
 ${prompt}
-})
-})
-})
+`
+  })
 });
 
 const data = await res.json();
