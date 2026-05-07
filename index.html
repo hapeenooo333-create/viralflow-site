@@ -208,6 +208,32 @@ h1{
 font-size:28px;
 }
 }
+}
+
+.wa-float{
+position:fixed;
+bottom:22px;
+right:20px;
+width:64px;
+height:64px;
+border-radius:50%;
+background:linear-gradient(135deg,#00ff88,#00cc6a);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+text-decoration:none;
+box-shadow:0 0 25px rgba(0,255,136,0.5);
+z-index:999;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.08)}
+100%{transform:scale(1)}
+}
+
 </style>
 </head>
 
@@ -561,6 +587,12 @@ updateStats();
 renderHistory();
 
 </script>
-
+<a
+href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20Premium"
+target="_blank"
+class="wa-float"
+>
+💬
+</a>
 </body>
 </html>
