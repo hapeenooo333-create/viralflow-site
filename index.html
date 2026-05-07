@@ -279,11 +279,15 @@ Premium Mode
 <div class="buttons">
 <button class="generate" onclick="generateAI(false)">🚀 Generate</button>
 
-<button class="variation" onclick="goPremium()">🔒 10 Variations</button>
+<button class="variation" onclick="goPremium()">🔒 <button onclick="showPremiumPopup()">
+🔒 10 Variations
+</button>
 
 <button class="copy" onclick="copyResult()">📋 Copy</button>
 
-<button class="export" onclick="goPremium()">🔒 Export TXT</button>
+<button class="export" onclick="goPremium()">🔒 <button onclick="showPremiumPopup()">
+🔒 Export TXT
+</button>
 </div>
 
 <div class="loading" id="loading">
@@ -549,7 +553,27 @@ JSON.stringify(history)
 );
 
 renderHistory();
+function showPremiumPopup(){
 
+alert(
+`🔥 VIRALFLOW AI PREMIUM 🔥
+
+✅ Unlimited Variations
+✅ Export TXT
+✅ Viral Hooks
+✅ AI Captions
+✅ Affiliate Scripts
+✅ WhatsApp Closing
+
+📲 Order kupitia WhatsApp sasa.`
+);
+
+window.open(
+"https://wa.me/255783535774?text=Nataka%20ViralFlow%20AI%20Premium",
+"_blank"
+);
+
+  }
 }
 
 function renderHistory(){
