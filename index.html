@@ -1220,24 +1220,22 @@ let finalOutput =
 output.replace(/(https:\/\/wa\.me\/[^\s]+)/g,
 '<a href="$1" target="_blank" style="color:#00ff88;font-weight:bold;">OPEN WHATSAPP</a>');
 
+let words = finalOutput.split(" ");
 let i = 0;
 
 document.getElementById("result").innerHTML = "";
 
 const typing = setInterval(() => {
 
-document.getElementById("result").innerHTML =
-finalOutput.substring(0, i);
+document.getElementById("result").innerHTML += words[i] + " ";
 
 i++;
 
-if(i > finalOutput.length){
-
+if(i >= words.length){
 clearInterval(typing);
-
 }
 
-}, 80);
+}, 250);
 
 saveHistory(prompt, output);
 
