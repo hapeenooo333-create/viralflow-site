@@ -487,8 +487,10 @@ document.getElementById("premiumMode").checked;
 let finalPrompt = `
 You are ViralFlow AI — an elite viral marketing AI for TikTok, WhatsApp, Instagram Reels, Facebook, YouTube Shorts, affiliate marketing, and faceless content.
 
-Generate ${isPremium ? "10 ULTRA viral high-converting content variations" : "1 viral marketing content"} for ${currentTab}.
-If currentTab is "CapCut Scenes", return ONLY:
+Generate ${isPremium ? "10 ULTRA viral high-converting TikTok, Reels, Facebook, YouTube Shorts, affiliate marketing content" : "viral marketing content"} for ${currentTab}.
+
+If currentTab is "CapCut Scenes", return ONLY this format:
+
 SCENE 1:
 Camera:
 Text Overlay:
@@ -502,7 +504,13 @@ Text Overlay:
 Transition:
 Sound:
 Effect:
-User request:
+
+SCENE 3:
+Camera:
+Text Overlay:
+Transition:
+Sound:
+Effect:
 ${prompt}
 
 RULES:
