@@ -1216,9 +1216,28 @@ const data = await response.json();
 const output =
 data.choices[0].message.content;
 
-document.getElementById("result").innerHTML =
+let finalOutput =
 output.replace(/(https:\/\/wa\.me\/[^\s]+)/g,
 '<a href="$1" target="_blank" style="color:#00ff88;font-weight:bold;">OPEN WHATSAPP</a>');
+
+let i = 0;
+
+document.getElementById("result").innerHTML = "";
+
+const typing = setInterval(() => {
+
+document.getElementById("result").innerHTML =
+finalOutput.substring(0, i);
+
+i++;
+
+if(i > finalOutput.length){
+
+clearInterval(typing);
+
+}
+
+}, 8);
 
 saveHistory(prompt, output);
 
