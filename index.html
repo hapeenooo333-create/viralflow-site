@@ -459,8 +459,79 @@ updateStats();
 
 }
 
-async function generateAI(variations){
+async function generateAI(variations=false){
 
+const prompt =
+document.getElementById("prompt").value;
+
+if(!prompt){
+alert("Andika prompt kwanza");
+return;
+}
+
+document.getElementById("result").innerHTML =
+"⏳ ViralFlow AI inatengeneza content...";
+
+try{
+
+const response = await fetch(
+"https://api.groq.com/openai/v1/chat/completions",
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+
+"Authorization":
+"Bearer WEKA_GROQ_API_KEY_YAKO"
+},
+
+body: JSON.stringify({
+
+model:"llama-3.3-70b-versatile",
+
+messages:[
+{
+role:"system",
+
+content:
+"You are ViralFlow AI, a Swahili marketing assistant that creates viral TikTok hooks, captions, CTA, faceless video scripts, trends, and WhatsApp selling scripts."
+},
+
+{
+role:"user",
+content: prompt
+}
+],
+
+temperature:0.9
+
+})
+
+});
+
+const data = await response.json();
+
+const output =
+data.choices[0].message.content;
+
+document.getElementById("result").innerText =
+output;
+
+saveHistory(prompt, output);
+
+updateStats();
+
+}catch(err){
+
+document.getElementById("result").innerHTML =
+"❌ Error kuunganisha Groq AI";
+
+console.log(err);
+
+}
+
+}
 const prompt =
 document.getElementById("prompt").value.trim();
 
