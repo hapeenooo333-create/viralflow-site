@@ -665,6 +665,31 @@ renderHistory();
 function goPremium(){
 generateAI(true);
 }
+function exportTXT(){
+
+const text =
+document.getElementById("result").innerText;
+
+if(!text){
+alert("Generate content kwanza");
+return;
+}
+
+const blob =
+new Blob([text], {type:"text/plain"});
+
+const a =
+document.createElement("a");
+
+a.href =
+URL.createObjectURL(blob);
+
+a.download =
+"viralflow-content.txt";
+
+a.click();
+
+  }
 </script>
 <a
 href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20Premium"
