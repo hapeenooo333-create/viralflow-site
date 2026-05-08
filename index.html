@@ -43,6 +43,7 @@ margin-top:10px;
 text-align:center;
 color:#aaa;
 margin:10px 0 22px;
+font-size:14px;
 }
 
 .stats{
@@ -58,11 +59,14 @@ border:1px solid #1e293b;
 border-radius:14px;
 padding:14px;
 text-align:center;
+font-size:13px;
 }
 
 .stat b{
 font-size:22px;
 color:#00ff88;
+display:block;
+margin-top:8px;
 }
 
 .tabs{
@@ -79,6 +83,8 @@ border:1px solid #334155;
 border-radius:20px;
 cursor:pointer;
 color:#ddd;
+font-size:14px;
+white-space:nowrap;
 }
 
 .tab.active{
@@ -100,6 +106,7 @@ align-items:center;
 gap:10px;
 margin-bottom:14px;
 color:#fbbf24;
+font-size:15px;
 }
 
 textarea{
@@ -129,6 +136,12 @@ border-radius:14px;
 font-weight:bold;
 font-size:15px;
 cursor:pointer;
+transition:all 0.3s ease;
+}
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 4px 15px rgba(0,255,136,0.3);
 }
 
 .generate{
@@ -156,6 +169,13 @@ display:none;
 text-align:center;
 margin-top:14px;
 color:#00ff88;
+font-size:15px;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%, 100%{opacity:1}
+50%{opacity:0.6}
 }
 
 .result{
@@ -166,7 +186,11 @@ border:1px solid #334155;
 border-radius:14px;
 padding:18px;
 white-space:pre-wrap;
-line-height:1.7;
+line-height:1.8;
+word-wrap:break-word;
+overflow-wrap:break-word;
+font-size:15px;
+min-height:100px;
 }
 
 .history{
@@ -180,6 +204,7 @@ padding:16px;
 .history h3{
 margin-bottom:12px;
 color:#00ff88;
+font-size:16px;
 }
 
 .item{
@@ -188,8 +213,10 @@ border:1px solid #1e293b;
 padding:10px;
 border-radius:10px;
 margin-bottom:8px;
-font-size:14px;
+font-size:13px;
 color:#ccc;
+overflow-wrap:break-word;
+word-wrap:break-word;
 }
 
 .footer{
@@ -199,14 +226,127 @@ margin-top:20px;
 font-size:13px;
 }
 
-@media(max-width:480px){
-.buttons{
-grid-template-columns:1fr;
+@media(max-width:768px){
+.container{
+padding:16px;
 }
 
 h1{
 font-size:28px;
 }
+
+.tabs{
+gap:6px;
+}
+
+.tab{
+padding:8px 12px;
+font-size:12px;
+}
+
+.buttons{
+grid-template-columns:1fr;
+}
+
+button{
+padding:12px;
+font-size:14px;
+}
+
+textarea{
+min-height:120px;
+font-size:15px;
+}
+
+.result{
+padding:14px;
+font-size:14px;
+}
+}
+
+@media(max-width:480px){
+.container{
+padding:14px;
+border-radius:18px;
+}
+
+h1{
+font-size:24px;
+margin-top:5px;
+}
+
+.subtitle{
+font-size:12px;
+margin:8px 0 16px;
+}
+
+.stats{
+gap:8px;
+margin-bottom:16px;
+}
+
+.stat{
+padding:12px;
+font-size:12px;
+}
+
+.stat b{
+font-size:18px;
+}
+
+.tabs{
+gap:5px;
+margin-bottom:14px;
+}
+
+.tab{
+padding:7px 10px;
+font-size:11px;
+border-radius:16px;
+}
+
+.panel{
+padding:14px;
+}
+
+textarea{
+min-height:100px;
+padding:12px;
+font-size:14px;
+}
+
+button{
+padding:11px;
+font-size:13px;
+border-radius:12px;
+}
+
+.result{
+padding:12px;
+font-size:13px;
+margin-top:12px;
+line-height:1.6;
+}
+
+.loading{
+font-size:13px;
+}
+
+.premium{
+font-size:13px;
+}
+
+.pricing-card{
+padding:16px;
+margin:18px 0;
+}
+
+.pricing-card h2{
+font-size:18px;
+}
+
+.price{
+font-size:24px;
 }
 }
 
@@ -225,14 +365,15 @@ font-size:30px;
 text-decoration:none;
 box-shadow:0 0 25px rgba(0,255,136,0.5);
 z-index:999;
-animation:pulse 2s infinite;
+animation:float 2s infinite;
 }
 
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.08)}
-100%{transform:scale(1)}
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0px)}
 }
+
 .pricing-card{
 background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(168,85,247,0.15));
 border:1px solid rgba(0,255,136,0.25);
@@ -246,6 +387,7 @@ box-shadow:0 0 35px rgba(0,255,136,0.12);
 .pricing-card h2{
 color:#00ff88;
 margin-bottom:10px;
+font-size:20px;
 }
 
 .price{
@@ -259,6 +401,7 @@ margin:10px 0;
 color:#facc15;
 font-weight:bold;
 margin-bottom:16px;
+font-size:14px;
 }
 
 .pricing-card ul{
@@ -266,11 +409,11 @@ list-style:none;
 padding:0;
 margin:18px 0;
 text-align:left;
+font-size:15px;
 }
 
 .pricing-card li{
 padding:8px 0;
-font-size:16px;
 }
 
 .pay-btn{
@@ -283,7 +426,14 @@ padding:16px;
 border-radius:16px;
 font-size:18px;
 box-shadow:0 0 25px rgba(0,255,136,0.35);
-  }
+margin-top:12px;
+transition:all 0.3s ease;
+}
+
+.pay-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 0 35px rgba(0,255,136,0.5);
+}
 </style>
 </head>
 
@@ -311,19 +461,13 @@ Total<br>
 
 <div class="tabs">
 <div class="tab active" onclick="setTab('TikTok',this)">TikTok</div>
-  <div class="tab" onclick="setTab('Faceless Videos',this)">
-🎬 Faceless Videos
-    </div>
-  <div class="tab" onclick="setTab('CapCut Scenes',this)">
-🎞️ CapCut Scenes
-  </div>
+<div class="tab" onclick="setTab('Faceless Videos',this)">🎬 Faceless</div>
+<div class="tab" onclick="setTab('CapCut Scenes',this)">🎞️ CapCut</div>
 <div class="tab" onclick="setTab('WhatsApp',this)">WhatsApp</div>
 <div class="tab" onclick="setTab('Affiliate',this)">Affiliate</div>
 <div class="tab" onclick="setTab('Ads',this)">Ads</div>
-<div class="tab" onclick="setTab('YouTube Shorts',this)">YouTube Shorts</div>
-  <div class="tab" onclick="setTab('TikTok Trends',this)">
-🔥 TikTok Trends
-  </div>
+<div class="tab" onclick="setTab('YouTube Shorts',this)">YouTube</div>
+<div class="tab" onclick="setTab('TikTok Trends',this)">🔥 Trends</div>
 </div>
 
 <div class="panel">
@@ -337,10 +481,9 @@ Premium Mode
 
 <div class="buttons">
 <button class="generate" onclick="generateAI(false)">🚀 Generate</button>
-
 <button class="variation" onclick="goPremium()">🔒 10 Variations</button>
 <button class="copy" onclick="copyResult()">📋 Copy</button>
-<button class="export" onclick="goPremium()">🔒 Export TXT</button>
+<button class="export" onclick="exportTXT()">🔒 Export TXT</button>
 </div>
 
 <div class="loading" id="loading">
@@ -350,6 +493,7 @@ Premium Mode
 <div class="result" id="result"></div>
 
 </div>
+
 <div class="pricing-card">
 <h2>💎 ViralFlow AI Premium</h2>
 <p class="price">TZS 30,000</p>
@@ -371,13 +515,14 @@ class="pay-btn"
 💰 Lipia Premium Sasa
 </a>
 </div>
+
 <div class="history">
 <h3>📌 History</h3>
 <div style="text-align:center;margin-top:18px;">
-  <a href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20AI%20Premium" 
-     style="display:inline-block;background:#25D366;color:white;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:bold;">
-    💬 Upgrade / Order Premium
-  </a>
+<a href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20AI%20Premium" 
+   style="display:inline-block;background:#25D366;color:white;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:14px;">
+  💬 Upgrade / Order Premium
+</a>
 </div>
 <div id="historyList"></div>
 </div>
@@ -410,6 +555,14 @@ if(tab==="TikTok"){
 prompt.placeholder="Mfano: Nipe TikTok hook ya kuuza viatu...";
 }
 
+if(tab==="Faceless Videos"){
+prompt.placeholder="Mfano: Nipe faceless video ideas...";
+}
+
+if(tab==="CapCut Scenes"){
+prompt.placeholder="Mfano: Describe your video concept for CapCut scenes...";
+}
+
 if(tab==="WhatsApp"){
 prompt.placeholder="Mfano: Nipe WhatsApp closing script...";
 }
@@ -424,6 +577,10 @@ prompt.placeholder="Mfano: Nipe Facebook ad copy...";
 
 if(tab==="YouTube Shorts"){
 prompt.placeholder="Mfano: Nipe YouTube Shorts script...";
+}
+
+if(tab==="TikTok Trends"){
+prompt.placeholder="Mfano: Nipe trending TikTok ideas...";
 }
 
 }
@@ -460,6 +617,24 @@ localStorage.setItem("vf_total",total);
 
 updateStats();
 
+}
+
+async function typeText(element, text, speed = 150) {
+element.innerText = "";
+let index = 0;
+
+return new Promise((resolve) => {
+function type() {
+if (index < text.length) {
+element.innerText += text[index];
+index++;
+setTimeout(type, speed);
+} else {
+resolve();
+}
+}
+type();
+});
 }
 
 async function generateAI(variations){
@@ -467,9 +642,6 @@ async function generateAI(variations){
 const prompt =
 document.getElementById("prompt").value.trim();
 
-const premium =
-document.getElementById("premiumMode").checked;
-
 const result =
 document.getElementById("result");
 
@@ -484,12 +656,12 @@ return;
 const isPremium =
 document.getElementById("premiumMode").checked;
 
-let finalPrompt = `
-You are ViralFlow AI — an elite viral marketing AI for TikTok, WhatsApp, Instagram Reels, Facebook, YouTube Shorts, affiliate marketing, and faceless content.
+let systemPrompt = `You are ViralFlow AI — an elite viral marketing AI.`;
 
-Generate ${isPremium ? "10 ULTRA viral high-converting TikTok, Reels, Facebook, YouTube Shorts, affiliate marketing content" : "viral marketing content"} for ${currentTab}.
+if(currentTab === "CapCut Scenes"){
+systemPrompt = `You are ViralFlow AI. Generate ONLY cinematic TikTok scenes in this EXACT format. NO hooks, captions, CTA, hashtags, or paragraphs.
 
-If currentTab is "CapCut Scenes", return ONLY this format:
+ONLY output:
 
 SCENE 1:
 Camera:
@@ -511,31 +683,31 @@ Text Overlay:
 Transition:
 Sound:
 Effect:
-${prompt}
 
-RULES:
+Make scenes cinematic, professional, and ready for CapCut.`;
+}else{
+systemPrompt = `You are ViralFlow AI — an elite viral marketing AI for TikTok, WhatsApp, Instagram Reels, Facebook, YouTube Shorts, affiliate marketing, and faceless content.
+
+Rules:
 - Make hooks emotional, shocking, curiosity-driven, and highly viral
 - Use modern Tanzanian Swahili
 - Make captions short, addictive, and social-media style
 - CTA must push WhatsApp messages and urgency
 - Generate DIFFERENT hashtags every time
-- Avoid repeating hashtags
 - Include trending TikTok style writing
 - Add emojis naturally
 - Make content look human-made and premium
 - Include faceless video ideas
 - Focus on sales + engagement + comments
 
-Return EXACTLY in this format:
+Return in this format:
 
 HOOK:
 CAPTION:
 CTA:
 HASHTAGS:
-VIDEO IDEA:
-
-Language: Swahili.
-`;
+VIDEO IDEA:`;
+}
 
 loading.style.display = "block";
 result.style.display = "none";
@@ -543,864 +715,36 @@ result.style.display = "none";
 try{
 
 const res = await fetch(API_URL,{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-
-  body: JSON.stringify({
-    prompt: `
-You are ViralFlow AI.
-You create HIGH-CONVERTING Swahili marketing content.
-
-Rules:
-- Make hooks emotional and viral
-- Use strong persuasion
-- Use emojis naturally
-- Make content feel modern TikTok style
-- Add CTA at the end
-- Make people WANT to buy
-- Speak fluent Swahili
-- Sound premium and exciting
-${currentTab.includes("CapCut") ? `
-
-Return ONLY in this format:
-
-SCENE 1:
-Camera:
-Text Overlay:
-Transition:
-Sound:
-Effect:
-
-SCENE 2:
-Camera:
-Text Overlay:
-Transition:
-Sound:
-Effect:
-
-SCENE 3:
-Camera:
-Text Overlay:
-Transition:
-Sound:
-Effect:
-
-` : ``}
-User request:
-${prompt}
-`
-  })
-});
-
-const data = await res.json();
-
-const text =
-data.result || "No response";
-
-result.innerText = text;
-
-result.style.display = "block";
-
-saveHistory(prompt,text);
-
-increaseStats();
-
-}catch(e){
-
-result.innerText =
-"Error: " + e.message;
-
-result.style.display = "block";
-
-}
-
-loading.style.display = "none";
-
-}
-
-function copyResult(){
-
-const text =
-document.getElementById("result").innerText;
-
-navigator.clipboard.writeText(text);
-
-alert("Copied ✅");
-
-}
-
-function exportTXT(){
-
-const text =
-document.getElementById("result").innerText;
-
-if(!text){
-alert("Hakuna result");
-return;
-}
-
-const blob =
-new Blob([text],{
-type:"text/plain"
-});
-
-const a =
-document.createElement("a");
-
-a.href =
-URL.createObjectURL(blob);
-
-a.download =
-"viralflow-result.txt";
-
-a.click();
-
-}
-
-function saveHistory(prompt,result){
-
-let history =
-JSON.parse(
-localStorage.getItem("vf_history") || "[]"
-);
-
-history.unshift({
-tab:currentTab,
-prompt:prompt,
-result:result,
-time:new Date().toLocaleString()
-});
-
-history = history.slice(0,10);
-
-localStorage.setItem(
-"vf_history",
-JSON.stringify(history)
-);
-
-renderHistory();
-function showPremiumPopup(){
-
-alert("🔥 VIRALFLOW AI PREMIUM 🔥");
-
-window.open(
-"https://wa.me/255783535774?text=Nataka%20ViralFlow%20AI%20Premium",
-"_blank"
-);
-
-  }
-}
-
-function renderHistory(){
-
-let history =
-JSON.parse(
-localStorage.getItem("vf_history") || "[]"
-);
-
-const box =
-document.getElementById("historyList");
-
-box.innerHTML = "";
-
-history.forEach(h=>{
-
-const div =
-document.createElement("div");
-
-div.className = "item";
-
-div.innerText =
-`${h.tab} • ${h.time}
-
-${h.prompt}`;
-
-box.appendChild(div);
-
-});
-
-}
-
-updateStats();
-
-renderHistory();
-function goPremium(){
-generateAI(true);
-}
-function exportTXT(){
-
-const text =
-document.getElementById("result").innerText;
-
-if(!text){
-alert("Generate content kwanza");
-return;
-}
-
-const win =
-window.open("", "_blank");
-
-win.document.write(
-"<pre style='white-space:pre-wrap;font-size:18px;padding:20px;font-family:Arial;'>" + text + "</pre>"
-);
-
-win.document.title =
-"viralflow-content.txt";
-
-  }
-</script>
-<a
-href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20Premium"
-target="_blank"
-class="wa-float"
->
-💬
-</a>
-</body>
-</html>font-size:34px;
-color:#00ff88;
-margin-top:10px;
-}
-
-.subtitle{
-text-align:center;
-color:#aaa;
-margin:10px 0 22px;
-}
-
-.stats{
-display:flex;
-gap:10px;
-margin-bottom:18px;
-}
-
-.stat{
-flex:1;
-background:#0f172a;
-border:1px solid #1e293b;
-border-radius:14px;
-padding:14px;
-text-align:center;
-}
-
-.stat b{
-font-size:22px;
-color:#00ff88;
-}
-
-.tabs{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-bottom:18px;
-}
-
-.tab{
-padding:10px 14px;
-background:#111827;
-border:1px solid #334155;
-border-radius:20px;
-cursor:pointer;
-color:#ddd;
-}
-
-.tab.active{
-background:#00ff88;
-color:black;
-font-weight:bold;
-}
-
-.panel{
-background:#0f172a;
-border:1px solid #1e293b;
-border-radius:18px;
-padding:18px;
-}
-
-.premium{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:14px;
-color:#fbbf24;
-}
-
-textarea{
-width:100%;
-min-height:150px;
-background:#020617;
-border:1px solid #334155;
-border-radius:14px;
-padding:15px;
-font-size:16px;
-color:white;
-resize:vertical;
-outline:none;
-}
-
-.buttons{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:14px;
-}
-
-button{
-padding:14px;
-border:none;
-border-radius:14px;
-font-weight:bold;
-font-size:15px;
-cursor:pointer;
-}
-
-.generate{
-background:#00ff88;
-color:black;
-}
-
-.variation{
-background:#38bdf8;
-color:black;
-}
-
-.copy{
-background:#f97316;
-color:black;
-}
-
-.export{
-background:#a855f7;
-color:white;
-}
-
-.loading{
-display:none;
-text-align:center;
-margin-top:14px;
-color:#00ff88;
-}
-
-.result{
-display:none;
-margin-top:16px;
-background:#020617;
-border:1px solid #334155;
-border-radius:14px;
-padding:18px;
-white-space:pre-wrap;
-line-height:1.7;
-}
-
-.history{
-margin-top:20px;
-background:#0f172a;
-border:1px solid #1e293b;
-border-radius:16px;
-padding:16px;
-}
-
-.history h3{
-margin-bottom:12px;
-color:#00ff88;
-}
-
-.item{
-background:#020617;
-border:1px solid #1e293b;
-padding:10px;
-border-radius:10px;
-margin-bottom:8px;
-font-size:14px;
-color:#ccc;
-}
-
-.footer{
-text-align:center;
-color:#666;
-margin-top:20px;
-font-size:13px;
-}
-
-@media(max-width:480px){
-.buttons{
-grid-template-columns:1fr;
-}
-
-h1{
-font-size:28px;
-}
-}
-}
-
-.wa-float{
-position:fixed;
-bottom:22px;
-right:20px;
-width:64px;
-height:64px;
-border-radius:50%;
-background:linear-gradient(135deg,#00ff88,#00cc6a);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-text-decoration:none;
-box-shadow:0 0 25px rgba(0,255,136,0.5);
-z-index:999;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.08)}
-100%{transform:scale(1)}
-}
-.pricing-card{
-background:linear-gradient(135deg,rgba(0,255,136,0.15),rgba(168,85,247,0.15));
-border:1px solid rgba(0,255,136,0.25);
-border-radius:24px;
-padding:22px;
-margin:24px 0;
-text-align:center;
-box-shadow:0 0 35px rgba(0,255,136,0.12);
-}
-
-.pricing-card h2{
-color:#00ff88;
-margin-bottom:10px;
-}
-
-.price{
-font-size:34px;
-font-weight:bold;
-color:#fff;
-margin:10px 0;
-}
-
-.scarcity{
-color:#facc15;
-font-weight:bold;
-margin-bottom:16px;
-}
-
-.pricing-card ul{
-list-style:none;
-padding:0;
-margin:18px 0;
-text-align:left;
-}
-
-.pricing-card li{
-padding:8px 0;
-font-size:16px;
-}
-
-.pay-btn{
-display:block;
-background:linear-gradient(135deg,#00ff88,#22c55e);
-color:#000;
-text-decoration:none;
-font-weight:bold;
-padding:16px;
-border-radius:16px;
-font-size:18px;
-box-shadow:0 0 25px rgba(0,255,136,0.35);
-  }
-.ai-loader{
-  display:none;
-  text-align:center;
-  color:#00ff88;
-  font-weight:bold;
-  margin:18px 0;
-  animation:pulse 1.2s infinite;
-}
-
-@keyframes pulse{
-  0%{
-    opacity:0.4;
-    transform:scale(0.98);
-  }
-
-  50%{
-    opacity:1;
-    transform:scale(1.03);
-  }
-
-  100%{
-    opacity:0.4;
-    transform:scale(0.98);
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<h1>🔥 ViralFlow AI</h1>
-
-<div class="subtitle">
-Full Monetization Mode • TikTok • WhatsApp • Affiliate • Ads • YouTube Shorts
-</div>
-
-<div class="stats">
-<div class="stat">
-Today<br>
-<b id="todayCount">0</b>
-</div>
-
-<div class="stat">
-Total<br>
-<b id="totalCount">0</b>
-</div>
-</div>
-
-<div class="tabs">
-<div class="tab active" onclick="setTab('TikTok',this)">TikTok</div>
-  <div class="tab" onclick="setTab('Faceless Videos',this)">
-🎬 Faceless Videos
-  </div>
-<div class="tab" onclick="setTab('WhatsApp',this)">WhatsApp</div>
-<div class="tab" onclick="setTab('Affiliate',this)">Affiliate</div>
-<div class="tab" onclick="setTab('Ads',this)">Ads</div>
-<div class="tab" onclick="setTab('YouTube Shorts',this)">YouTube Shorts</div>
-  <div class="tab" onclick="setTab('TikTok Trends',this)">
-🔥 TikTok Trends
-  </div>
-</div>
-
-<div class="panel">
-
-<label class="premium">
-<input type="checkbox" id="premiumMode">
-Premium Mode
-</label>
-
-<textarea id="prompt" placeholder="Mfano: Nipe TikTok hooks za kuuza bidhaa online..."></textarea>
-
-<div class="buttons">
-<button class="generate" onclick="generateAI(false)">🚀 Generate</button>
-
-<button class="variation" onclick="goPremium()">🔒 10 Variations</button>
-<button class="copy" onclick="copyResult()">📋 Copy</button>
-<button class="export" onclick="goPremium()">🔒 Export TXT</button>
-</div>
-
-<div class="loading ai-loader" id="loading">
-⏳ ViralFlow AI inatengeneza content...
-</div>
-
-<div class="result" id="result"></div>
-
-</div>
-<div class="pricing-card">
-<h2>💎 ViralFlow AI Premium</h2>
-<p class="price">TZS 30,000</p>
-<p class="scarcity">⚡ Offer ya leo: watu 20 wa kwanza tu</p>
-
-<ul>
-<li>✅ 10 Variations</li>
-<li>✅ Export TXT</li>
-<li>✅ Premium Scripts</li>
-<li>✅ WhatsApp Closing</li>
-<li>✅ Affiliate Templates</li>
-</ul>
-
-<a
-href="https://wa.me/255783535774?text=Nataka%20kulipia%20ViralFlow%20AI%20Premium%20TZS%2030,000"
-target="_blank"
-class="pay-btn"
->
-💰 Lipia Premium Sasa
-</a>
-</div>
-<div class="history">
-<h3>📌 History</h3>
-<div style="text-align:center;margin-top:18px;">
-  <a href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20AI%20Premium" 
-     style="display:inline-block;background:#25D366;color:white;padding:14px 20px;border-radius:12px;text-decoration:none;font-weight:bold;">
-    💬 Upgrade / Order Premium
-  </a>
-</div>
-<div id="historyList"></div>
-</div>
-
-<div class="footer">
-Powered by Groq + Cloudflare Workers
-</div>
-
-</div>
-
-<script>
-
-const API_URL = "https://viralflow-groq-api.hapeenooo555.workers.dev";
-
-let currentTab = "TikTok";
-
-function setTab(tab,el){
-
-currentTab = tab;
-
-document.querySelectorAll(".tab").forEach(t=>{
-t.classList.remove("active");
-});
-
-el.classList.add("active");
-
-const prompt = document.getElementById("prompt");
-
-if(tab==="TikTok"){
-prompt.placeholder="Mfano: Nipe TikTok hook ya kuuza viatu...";
-}
-
-if(tab==="WhatsApp"){
-prompt.placeholder="Mfano: Nipe WhatsApp closing script...";
-}
-
-if(tab==="Affiliate"){
-prompt.placeholder="Mfano: Nipe affiliate marketing caption...";
-}
-
-if(tab==="Ads"){
-prompt.placeholder="Mfano: Nipe Facebook ad copy...";
-}
-
-if(tab==="YouTube Shorts"){
-prompt.placeholder="Mfano: Nipe YouTube Shorts script...";
-}
-
-}
-
-function updateStats(){
-
-const today = new Date().toDateString();
-
-let savedDay = localStorage.getItem("vf_day");
-
-if(savedDay !== today){
-localStorage.setItem("vf_day",today);
-localStorage.setItem("vf_today","0");
-}
-
-document.getElementById("todayCount").innerText =
-localStorage.getItem("vf_today") || 0;
-
-document.getElementById("totalCount").innerText =
-localStorage.getItem("vf_total") || 0;
-
-}
-
-function increaseStats(){
-
-let today =
-parseInt(localStorage.getItem("vf_today") || 0) + 1;
-
-let total =
-parseInt(localStorage.getItem("vf_total") || 0) + 1;
-
-localStorage.setItem("vf_today",today);
-localStorage.setItem("vf_total",total);
-
-updateStats();
-
-}
-
-async function generateAI(variations=false){
-
-const prompt =
-document.getElementById("prompt").value;
-
-if(!prompt){
-alert("Andika prompt kwanza");
-return;
-}
-
-document.getElementById("result").innerHTML =
-"⏳ ViralFlow AI inatengeneza content...";
-
-try{
-
-const response = await fetch(
-"https://api.groq.com/openai/v1/chat/completions",
-{
 method:"POST",
-
 headers:{
-"Content-Type":"application/json",
-
-"Authorization":
-"Bearer WEKA_GROQ_API_KEY_YAKO"
+"Content-Type":"application/json"
 },
 
 body: JSON.stringify({
-
-model:"llama-3.3-70b-versatile",
-
-messages:[
-{
-role:"system",
-
-content:
-"You are ViralFlow AI, a Swahili marketing assistant that creates viral TikTok hooks, captions, CTA, faceless video scripts, trends, and WhatsApp selling scripts."
-},
-
-{
-role:"user",
-content: prompt
-}
-],
-
-temperature:0.9
-
+prompt: systemPrompt + "\n\nUser request:\n" + prompt
 })
-
-});
-
-const data = await response.json();
-
-const output =
-data.choices[0].message.content;
-
-let finalOutput =
-output.replace(/(https:\/\/wa\.me\/[^\s]+)/g,
-'<a href="$1" target="_blank" style="color:#00ff88">$1</a>');
-
-let words = finalOutput.split(" ");
-
-let i = 0;
-
-document.getElementById("result").innerHTML = "";
-
-const typing = setInterval(() => {
-
-document.getElementById("result").innerHTML += words[i] + " ";
-
-i++;
-
-if(i >= words.length){
-
-clearInterval(typing);
-
-}
-
-}, 250);
-
-saveHistory(prompt, output);
-
-updateStats();
-
-}catch(err){
-
-document.getElementById("result").innerHTML =
-"❌ Error kuunganisha Groq AI";
-
-console.log(err);
-
-}
-
-}
-const prompt =
-document.getElementById("prompt").value.trim();
-
-const premium =
-document.getElementById("premiumMode").checked;
-
-const result =
-document.getElementById("result");
-
-const loading =
-document.getElementById("loading");
-
-if(!prompt){
-alert("Andika prompt kwanza");
-return;
-}
-
-const isPremium =
-document.getElementById("premiumMode").checked;
-
-let finalPrompt = `
-You are ViralFlow AI.
-
-Generate ${
-isPremium ? "10 different viral marketing variations" : "1 viral marketing result"
-}
-
-for ${currentTab}.
-
-User request:
-${prompt}
-
-Return:
-
-HOOK:
-CAPTION:
-CTA:
-HASHTAGS:
-Generate 15 viral hashtags for Tanzania.
-Language: Swahili.
-Make it emotional, viral, practical, and sales-focused.
-`;
-
-loading.style.display = "block";
-result.style.display = "none";
-
-try{
-
-const res = await fetch(API_URL,{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-
-  body: JSON.stringify({
-    prompt: `
-You are ViralFlow AI.
-You create HIGH-CONVERTING Swahili marketing content.
-
-Rules:
-- Make hooks emotional and viral
-- Use strong persuasion
-- Use emojis naturally
-- Make content feel modern TikTok style
-- Add CTA at the end
-- Make people WANT to buy
-- Speak fluent Swahili
-- Sound premium and exciting
-
-User request:
-${prompt}
-`
-  })
 });
 
 const data = await res.json();
 
-const text =
-data.result || "No response";
+const text = data.result || "No response";
 
-result.innerText = text;
-
+loading.style.display = "none";
 result.style.display = "block";
 
-saveHistory(prompt,text);
+await typeText(result, text, 50);
+
+saveHistory(prompt, text);
 
 increaseStats();
 
 }catch(e){
 
-result.innerText =
-"Error: " + e.message;
-
+loading.style.display = "none";
 result.style.display = "block";
+result.innerText = "Error: " + e.message;
 
 }
-
-loading.style.display = "none";
 
 }
 
@@ -1408,6 +752,11 @@ function copyResult(){
 
 const text =
 document.getElementById("result").innerText;
+
+if(!text){
+alert("Generate content kwanza");
+return;
+}
 
 navigator.clipboard.writeText(text);
 
@@ -1421,7 +770,7 @@ const text =
 document.getElementById("result").innerText;
 
 if(!text){
-alert("Hakuna result");
+alert("Generate content kwanza");
 return;
 }
 
@@ -1437,7 +786,7 @@ a.href =
 URL.createObjectURL(blob);
 
 a.download =
-"viralflow-result.txt";
+"viralflow-content.txt";
 
 a.click();
 
@@ -1465,16 +814,7 @@ JSON.stringify(history)
 );
 
 renderHistory();
-function showPremiumPopup(){
 
-alert("🔥 VIRALFLOW AI PREMIUM 🔥");
-
-window.open(
-"https://wa.me/255783535774?text=Nataka%20ViralFlow%20AI%20Premium",
-"_blank"
-);
-
-  }
 }
 
 function renderHistory(){
@@ -1497,9 +837,7 @@ document.createElement("div");
 div.className = "item";
 
 div.innerText =
-`${h.tab} • ${h.time}
-
-${h.prompt}`;
+`${h.tab} • ${h.time}\n${h.prompt}`;
 
 box.appendChild(div);
 
@@ -1507,34 +845,16 @@ box.appendChild(div);
 
 }
 
-updateStats();
-
-renderHistory();
 function goPremium(){
 generateAI(true);
 }
-function exportTXT(){
 
-const text =
-document.getElementById("result").innerText;
+updateStats();
 
-if(!text){
-alert("Generate content kwanza");
-return;
-}
+renderHistory();
 
-const win =
-window.open("", "_blank");
-
-win.document.write(
-"<pre style='white-space:pre-wrap;font-size:18px;padding:20px;font-family:Arial;'>" + text + "</pre>"
-);
-
-win.document.title =
-"viralflow-content.txt";
-
-  }
 </script>
+
 <a
 href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20Premium"
 target="_blank"
@@ -1542,5 +862,6 @@ class="wa-float"
 >
 💬
 </a>
+
 </body>
 </html>
