@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+k<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -675,23 +675,17 @@ alert("Generate content kwanza");
 return;
 }
 
-const blob =
-new Blob([text], {type:"text/plain"});
+const win =
+window.open("", "_blank");
 
-const a =
-document.createElement("a");
+win.document.write(
+"<pre style='white-space:pre-wrap;font-size:18px;padding:20px;font-family:Arial;'>" + text + "</pre>"
+);
 
-const url = URL.createObjectURL(blob);
+win.document.title =
+"viralflow-content.txt";
 
-a.href = url;
-a.download = "viralflow-content.txt";
-
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
-
-URL.revokeObjectURL(url);
-  }
+}
 </script>
 <a
 href="https://wa.me/255783535774?text=Nataka%20ViralFlow%20Premium"
