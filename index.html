@@ -1216,8 +1216,9 @@ const data = await response.json();
 const output =
 data.choices[0].message.content;
 
-document.getElementById("result").innerText =
-output;
+document.getElementById("result").innerHTML =
+output.replace(/(https:\/\/wa\.me\/[^\s]+)/g,
+'<a href="$1" target="_blank" style="color:#00ff88;font-weight:bold;">OPEN WHATSAPP</a>');
 
 saveHistory(prompt, output);
 
