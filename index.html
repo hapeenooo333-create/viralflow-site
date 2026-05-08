@@ -1218,9 +1218,10 @@ data.choices[0].message.content;
 
 let finalOutput =
 output.replace(/(https:\/\/wa\.me\/[^\s]+)/g,
-'<a href="$1" target="_blank" style="color:#00ff88;font-weight:bold;">OPEN WHATSAPP</a>');
+'<a href="$1" target="_blank" style="color:#00ff88">$1</a>');
 
 let words = finalOutput.split(" ");
+
 let i = 0;
 
 document.getElementById("result").innerHTML = "";
@@ -1232,7 +1233,9 @@ document.getElementById("result").innerHTML += words[i] + " ";
 i++;
 
 if(i >= words.length){
+
 clearInterval(typing);
+
 }
 
 }, 250);
