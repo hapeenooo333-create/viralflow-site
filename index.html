@@ -474,28 +474,30 @@ return;
 
 let finalPrompt = `
 You are ViralFlow AI.
+const isPremium =
+document.getElementById("premiumMode").checked;
 
-Respond in Swahili.
+let finalPrompt = `
+You are ViralFlow AI.
 
-Category: ${currentTab}
+Generate ${
+isPremium ? "10 different viral marketing variations" : "1 viral marketing result"
+}
 
-Premium mode:
-${premium ? "ON" : "OFF"}
+for ${currentTab}.
 
-Task:
+User request:
 ${prompt}
 
-Format:
+Return:
+
 HOOK:
 CAPTION:
 CTA:
 HASHTAGS:
 
-${variations
-? "Generate 10 strong variations."
-: "Generate one powerful result."}
-
-Make it persuasive, emotional, viral and practical.
+Language: Swahili.
+Make it emotional, viral, practical, and sales-focused.
 `;
 
 loading.style.display = "block";
