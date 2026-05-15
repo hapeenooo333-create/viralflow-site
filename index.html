@@ -1151,9 +1151,9 @@ const loading=document.getElementById('loading');
 if(!prompt){alert('Enter a prompt');return;}
 if(!currentUser){alert('Please login');return;}
 
-const apiKey=localStorage.getItem('vf_groq_key');
+const apiKey=localStorage.getItem('groq_api_key');
 if(!apiKey){
-alert('⚠️ Please add your Groq API key in API Settings');
+alert('Weka API key kwanza');
 switchTab('api',document.querySelector('[onclick*="switchTab(\'api\'"]'));
 return;
 }
