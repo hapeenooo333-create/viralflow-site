@@ -1390,7 +1390,10 @@ alert('✅ Settings saved!');
 
 function testAPIConnection(){
 const apiKey = localStorage.getItem("groq_api_key");
-if(!apiKey){alert('⚠️ Please enter API key');return;}
+if(!apiKey){
+alert('Weka API key kwanza');
+return;
+}
 alert('✅ Settings saved! API will be tested on first generation.');
 saveSettings();
 }
