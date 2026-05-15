@@ -1163,6 +1163,8 @@ let systemPrompt = `
 You are ViralFlow AI.
 
 You generate EXTREMELY viral Tanzanian TikTok hooks in natural Swahili.
+Generate 5 viral Tanzanian TikTok hooks about ${topic}
+Vibe: ${selectedVibe}
 
 RULES:
 - Use REAL Tanzanian internet slang
@@ -1185,6 +1187,18 @@ STYLE:
 - Street vibe
 - Comment bait
 - Easy to read fast
+
+VIBES:
+- Hustle
+- Freedom
+- Utajiri
+- Motivation
+- Affiliate
+- Online Business
+- Faceless
+- Sad Story
+- Controversial
+- Lifestyle
 
 GOOD EXAMPLES:
 - Simu imenitoa block 😭
@@ -1629,6 +1643,18 @@ Link in bio 🔥
 
 HASHTAGS:
 #AffiliateMarketing #PassiveIncome #TikTokBusiness #FYP
+
+Reject hooks that:
+- sound translated
+- contain broken Swahili
+- are too long
+- are boring
+- don't create curiosity
+
+Only return the BEST viral hooks.
+
+🔥 Viral Score: 92/100
+
 `;
 
 if(currentTab==="CapCut Scenes"){
