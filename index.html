@@ -1389,7 +1389,7 @@ alert('✅ Settings saved!');
 }
 
 function testAPIConnection(){
-const apiKey=document.getElementById('groqApiKey').value;
+const apiKey = localStorage.getItem("groq_api_key");
 if(!apiKey){alert('⚠️ Please enter API key');return;}
 alert('✅ Settings saved! API will be tested on first generation.');
 saveSettings();
