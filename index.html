@@ -1143,6 +1143,13 @@ type();
 });
 }
 
+let aiMemory = {
+  recentHooks: [],
+  recentStyles: [],
+  bannedOpenings: [],
+  bestPerformers: []
+};
+  
 async function generateAI(variations=false){
 const prompt=document.getElementById('prompt').value.trim();
 const result=document.getElementById('result');
