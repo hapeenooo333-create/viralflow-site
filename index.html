@@ -1786,6 +1786,9 @@ loading.style.display="none";
 result.style.display="block";
 
 generationResult=text;
+  if(isWeakHook(text)){
+  text = "⚠️ Weak repetitive hook detected. Generate again.";
+  }
 await typeText(result,text,30);
 
 updateStats();
