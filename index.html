@@ -1780,7 +1780,7 @@ throw new Error(`API Error: ${response.status}`);
 }
 
 const data=await response.json();
-const text=data.choices[0].message.content;
+let text=data.choices[0].message.content;
 
 loading.style.display="none";
 result.style.display="block";
