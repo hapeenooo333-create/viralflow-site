@@ -1177,10 +1177,19 @@ ${aiMemory.recentHooks.join("\n")}
 function isWeakHook(text) {
   const lower = text.toLowerCase();
 
-  return bannedWords.some(word =>
-    lower.includes(word)
+  const weakPatterns = [
+    "bad example",
+    "good example",
+    "let's try again",
+    "online business is a good opportunity",
+    "kila mtu anaweza",
+    "hii inaweza kusaidia maisha yako"
+  ];
+
+  return weakPatterns.some(p =>
+    lower.includes(p)
   );
-  }
+}
 if(!prompt){alert('Enter a prompt');return;}
 if(!currentUser){alert('Please login');return;}
 
