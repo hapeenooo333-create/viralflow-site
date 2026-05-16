@@ -1159,13 +1159,20 @@ const memoryContext = `
 Recent Hooks:
 ${aiMemory.recentHooks.join("\n")}
 `;
-  const bannedWords = [
-  "get rich quick",
-  "100% guaranteed",
-  "become millionaire overnight",
-  "easy cash scam",
-  "fake investment"
-];
+  function isWeakHook(text){
+  const lower = text.toLowerCase();
+
+  const weakPatterns = [
+    "bad example",
+    "good example",
+    "let's try again",
+    "online business is a good opportunity",
+    "kila mtu anaweza",
+    "hii inaweza kusaidia maisha yako"
+  ];
+
+  return weakPatterns.some(p => lower.includes(p));
+  }
 
 function isWeakHook(text) {
   const lower = text.toLowerCase();
@@ -1784,8 +1791,8 @@ result.style.display="block";
 
 generationResult=text;
   if(isWeakHook(text)){
-result.innerText = "⚠️ Weak repetitive hook detected. Generate again.";
-return;
+  result.innerText = "⚠️ Weak output detected. Generate again.";
+  return;
   }
 await typeText(result,text,30);
 
