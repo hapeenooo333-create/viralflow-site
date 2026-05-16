@@ -1787,7 +1787,8 @@ result.style.display="block";
 
 generationResult=text;
   if(isWeakHook(text)){
-  text = "⚠️ Weak repetitive hook detected. Generate again.";
+result.innerText = "⚠️ Weak repetitive hook detected. Generate again.";
+return;
   }
 await typeText(result,text,30);
 
