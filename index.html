@@ -1830,14 +1830,15 @@ generationResult=text;
   result.innerText = "⚠️ Weak output detected. Generate again.";
   return;
   }
-await typeText(result,text,30);
-
+  
 previousOutputs.push(text);
 
 localStorage.setItem(
   "vf_memory",
   JSON.stringify(previousOutputs.slice(-50))
 );
+  
+await typeText(result,text,30);
   
 updateStats();
 saveHistory(prompt,text);
