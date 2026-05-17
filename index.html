@@ -1832,6 +1832,13 @@ generationResult=text;
   }
 await typeText(result,text,30);
 
+previousOutputs.push(text);
+
+localStorage.setItem(
+  "vf_memory",
+  JSON.stringify(previousOutputs.slice(-50))
+);
+  
 updateStats();
 saveHistory(prompt,text);
 updateAnalytics(text);
