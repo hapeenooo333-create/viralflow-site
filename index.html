@@ -1060,13 +1060,17 @@ nameGroup.style.display='block';
 title.textContent='Create Your Account';
 subtitle.textContent='Join thousands of creators using ViralFlow AI';
 btn.textContent='Sign Up';
-toggle.innerHTML="Already have an account? <button onclick='toggleAuth()' style='background:none;border:0;color:#00ff88;font-weight:800;font-size:16px'>Login</button>";
+toggle.innerHTML=`Already have an account?
+<span style="color:#00ff88;font-weight:800;font-size:16px;cursor:pointer"
+ontouchstart="toggleAuth()" onclick="toggleAuth()">Login</span>`;
 }else{
 nameGroup.style.display='none';
 title.textContent='Welcome to ViralFlow AI';
 subtitle.textContent='AI-powered content generation for social media';
 btn.textContent='Login';
-toggle.innerHTML="Don't have an account? <button onclick='toggleAuth()' style='background:none;border:0;color:#00ff88;font-weight:800;font-size:16px'>Sign up</button>";
+toggle.innerHTML=`Don't have an account?
+<span style="color:#00ff88;font-weight:800;font-size:16px;cursor:pointer"
+ontouchstart="toggleAuth()" onclick="toggleAuth()">Sign up</span>`;
 }
 }
 
